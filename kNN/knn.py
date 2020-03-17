@@ -4,6 +4,7 @@ import nonparametric_regression as nr
 import matplotlib.pyplot as plt
 import f_measure as fm
 from sklearn import preprocessing
+from datetime import datetime
 
 STEP_DIVIDER = 500.0
 
@@ -86,8 +87,8 @@ def window_regression(X, Y, classes_distribution, is_fixed_window):
     return best_values
 
 
-# ('euclidean', 'sigmoid', 0.12036968843043502, 0.7575095531167202) - fixed
-# ('manhattan', 'triweight', 11, 0.7599672025991207) - variable
+# ('manhattan', 'logistic', 0.0018557025517033248, 0.7646143821746378) - fixed
+# ('manhattan', 'quartic', 9, 0.7694711581915796) - variable
 
 def build_graphics(X, Y, classes_distribution, distance_name, kernel_name, is_fixed_window):
     distance_func = nr.Distances.__dict__[distance_name].__func__
@@ -120,14 +121,14 @@ def solve():
     X = data_set.values[:, :-1]
     Y = data_set.values[:, -1]
     normalized_X = preprocessing.normalize(X)
-    build_graphics(normalized_X, Y, classes_distribution, 'euclidean', 'sigmoid', True)
-    # build_graphics(normalized_X, Y, classes_distribution, 'manhattan', 'triweight', False)
+    # build_graphics(normalized_X, Y, classes_distribution, 'manhattan', 'logistic', True)
+    build_graphics(normalized_X, Y, classes_distribution, 'manhattan', 'quartic', False)
     # print(datetime.now())
     # print(window_regression(normalized_X, Y, classes_distribution, True))
     # print(datetime.now())
-    # print(datetime.now())
-    # print(window_regression(data_set.values, classes_distribution, False))
-    # print(datetime.now())
+    print(datetime.now())
+    print(window_regression(normalized_X, Y, classes_distribution, False))
+    print(datetime.now())
 
 
 if __name__ == '__main__':
