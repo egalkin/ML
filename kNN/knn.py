@@ -121,14 +121,14 @@ def solve():
     X = data_set.values[:, :-1]
     Y = data_set.values[:, -1]
     normalized_X = preprocessing.normalize(X)
-    # build_graphics(normalized_X, Y, classes_distribution, 'manhattan', 'logistic', True)
+    build_graphics(normalized_X, Y, classes_distribution, 'manhattan', 'logistic', True)
     build_graphics(normalized_X, Y, classes_distribution, 'manhattan', 'quartic', False)
     # print(datetime.now())
     # print(window_regression(normalized_X, Y, classes_distribution, True))
     # print(datetime.now())
-    print(datetime.now())
-    print(window_regression(normalized_X, Y, classes_distribution, False))
-    print(datetime.now())
+    # print(datetime.now())
+    # print(window_regression(normalized_X, Y, classes_distribution, False))
+    # print(datetime.now())
 
 
 if __name__ == '__main__':
